@@ -24,13 +24,6 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/experiences"
-            className="transition-opacity hover:opacity-70"
-          >
-            Experiences
-          </Link>
-
-          <Link
             href="/packages"
             className="transition-opacity hover:opacity-70"
           >
@@ -38,14 +31,16 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/stories"
+            href="/experiences"
             className="transition-opacity hover:opacity-70"
           >
-            Stories
+            Experiences
           </Link>
 
+          
+
           <Link
-            href="/contact"
+            href="/packages"
             className="rounded-full bg-white px-5 py-2.5 text-black transition-opacity hover:opacity-90"
           >
             Plan a Trip

@@ -1,29 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
-const journeys = [
-  {
-    title: "Rajgir",
-    subtitle: "Ancient hills & timeless stories",
-    duration: "2 Days",
-    image: "/rajgir.jpg",
-  },
-  {
-    title: "Bodh Gaya",
-    subtitle: "A journey into stillness",
-    duration: "2 Days",
-    image: "/bodh-gaya.jpg",
-  },
-  {
-    title: "Barabar Caves",
-    subtitle: "India's oldest rock-cut caves",
-    duration: "1 Day",
-    image: "/barabar.jpg",
-  },
-];
+import { packages } from "@/data/packages";
 
 export default function FeaturedJourneys() {
+  // Show these three packages on the homepage.
+  // The complete list remains available at /packages.
+  const featuredPackages = [
+    packages.find((pkg) => pkg.slug === "a-night-in-real-bihar"),
+    packages.find((pkg) => pkg.slug === "magadh-roots"),
+    packages.find((pkg) => pkg.slug === "forgotten-magadh"),
+  ].filter(Boolean);
+
   return (
     <section className="bg-white px-6 py-24">
 
@@ -53,61 +43,112 @@ export default function FeaturedJourneys() {
         {/* Cards */}
         <div className="grid gap-6 md:grid-cols-3">
 
-          {journeys.map((journey, index) => (
+          {featuredPackages.map((journey, index) => {
 
-            <motion.div
-              key={journey.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-              }}
-              className="group cursor-pointer"
-            >
+            if (!journey) return null;
 
-              {/* Image */}
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+            return (
+              <motion.div
+                key={journey.slug}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                }}
+              >
 
-                <img
-                  src={journey.image}
-                  alt={journey.title}
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-700
-                    group-hover:scale-105
-                  "
-                />
+                <Link
+                  href={`/packages/${journey.slug}`}
+                  className="group block cursor-pointer"
+                >
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  {/* Image */}
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
 
-                {/* Text */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <img
+                      src={journey.images[0]}
+                      alt={journey.title}
+                      className="
+                        h-full
+                        w-full
+                        object-cover
+                        transition-transform
+                        duration-700
+                        group-hover:scale-105
+                      "
+                    />
 
-                  <p className="mb-2 text-xs uppercase tracking-widest text-white/70">
-                    {journey.duration}
-                  </p>
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
-                  <h3 className="font-[var(--font-playfair)] text-3xl">
-                    {journey.title}
-                  </h3>
+                    {/* Text */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
 
-                  <p className="mt-1 text-sm text-white/80">
-                    {journey.subtitle}
-                  </p>
+                      <div className="mb-3 flex items-center justify-between gap-4">
 
-                </div>
+                        <p className="text-xs uppercase tracking-widest text-white/70">
+                          {journey.duration}
+                        </p>
 
-              </div>
+                        {journey.featured && (
+                          <span className="rounded-full bg-white/15 px-3 py-1 text-[10px] uppercase tracking-wider backdrop-blur-md">
+                            Most Popular
+                          </span>
+                        )}
 
-            </motion.div>
+                      </div>
 
-          ))}
+                      <h3 className="font-[var(--font-playfair)] text-3xl">
+                        {journey.title}
+                      </h3>
+
+                      <p className="mt-1 text-sm text-white/80">
+                        {journey.tagline}
+                      </p>
+
+                      <div className="mt-5 flex items-center justify-between">
+
+                        <p className="text-sm text-white/80">
+  From{" "}
+  <span className="font-medium text-white">
+    ₹
+    {journey.pricing.fourGuests.toLocaleString("en-IN")}
+  </span>
+  <span className="ml-2 text-xs text-white/60">
+    · Private/Family Trip
+  </span>
+</p>
+
+                        <span className="text-sm font-medium transition-transform duration-300 group-hover:translate-x-1">
+                          Explore →
+                        </span>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </Link>
+
+              </motion.div>
+            );
+          })}
+
+        </div>
+
+
+        {/* View all packages */}
+        <div className="mt-10 text-center">
+
+          <Link
+            href="/packages"
+            className="inline-flex items-center rounded-full border border-black px-6 py-3 text-sm font-medium transition-all duration-300 hover:bg-black hover:text-white"
+          >
+            Explore all journeys →
+          </Link>
 
         </div>
 

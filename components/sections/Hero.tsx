@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -66,20 +67,22 @@ export default function Hero() {
         </p>
 
 
-        <button
-          className="
-            mt-8
-            rounded-full
-            bg-white
-            text-black
-            px-8
-            py-3
-            hover:bg-gray-200
-            transition
-          "
-        >
-          Explore Journeys
-        </button>
+        <Link
+  href="/packages"
+  className="
+    mt-8
+    inline-block
+    rounded-full
+    bg-white
+    px-8
+    py-3
+    text-black
+    transition
+    hover:bg-gray-200
+  "
+>
+  Explore Journeys →
+</Link>
 
       </div>
 
