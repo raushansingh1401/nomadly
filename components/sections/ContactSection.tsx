@@ -116,7 +116,7 @@ export default function ContactSection() {
           </div>
 
           <a
-            href={`https://wa.me/919?text=${encodeURIComponent(
+            href={`https://wa.me/919934007077?text=${encodeURIComponent(
               "Hi Nomadly, I would like to plan a journey in Bihar."
             )}`}
             target="_blank"
