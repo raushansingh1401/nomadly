@@ -32,7 +32,7 @@ export default function ContactSection() {
 
           {/* Phone */}
           <a
-            href="tel:+919957988651"
+            href="tel:+919934007077"
             className="group rounded-2xl border border-white/10 bg-white/[0.04] p-7 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08]"
           >
             <p className="text-xs uppercase tracking-[0.2em] text-white/40">
@@ -116,7 +116,7 @@ export default function ContactSection() {
           </div>
 
           <a
-            href={`https://wa.me/919957988651?text=${encodeURIComponent(
+            href={`https://wa.me/919?text=${encodeURIComponent(
               "Hi Nomadly, I would like to plan a journey in Bihar."
             )}`}
             target="_blank"

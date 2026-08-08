@@ -131,7 +131,7 @@ export default async function PackagePage({
           </p>
 
           <a
-            href={`https://wa.me/919957988651?text=${encodeURIComponent(
+            href={`https://wa.me/919934007077?text=${encodeURIComponent(
               `Hi Nomadly, I am interested in the "${packageData.title}" package.`
             )}`}
             target="_blank"
