@@ -40,7 +40,7 @@ export default function ContactSection() {
             </p>
 
             <h3 className="mt-4 text-xl font-medium">
-              +91 99579 88651
+              +91 9934 007 077
             </h3>
 
             <p className="mt-2 text-sm text-white/50">
